@@ -27,13 +27,13 @@ int main() {
     // Set the radius of the circle (in pixels away from the center of the screen)
     int radius = 200;
     int pixelOffset = 0;
-    std::cout << "Enter the smoothness of the circle (lower value for smoother circle): ";
+    std::cout << "Enter the smoothness of the circle (lower value for smoother circle; 3 for perfect): ";
     std::cin >> smoothness;
     std::cout << "-------------------------------------------------------------" << std::endl;
 	std::cout << "Enter the radius of the circle (in pixels away from the center; 400 for perfect): ";
     std::cin >> radius;
     std::cout << "-------------------------------------------------------------" << std::endl;
-    std::cout << "Offset for the center of the circle (y-axis): ";
+    std::cout << "Offset for the center of the circle (y-axis); 7 for perfect: ";
     std::cin >> pixelOffset;
     std::cout << "-------------------------------------------------------------" << std::endl;
     std::cout << "Circle is ready to be drawn." << std::endl;
