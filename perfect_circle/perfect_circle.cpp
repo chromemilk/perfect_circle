@@ -23,10 +23,15 @@ int main() {
     std::cout << "Press 'ESC' to exit the program." << std::endl;
     std::cout << "-------------------------------------------------------------" << std::endl;
     // Get the smoothness of the circle
-    int smoothness = 1;
+    double smoothness = 1;
+    // Set the radius of the circle (in pixels away from the center of the screen)
+    int radius = 200;
     int pixelOffset = 0;
     std::cout << "Enter the smoothness of the circle (lower value for smoother circle): ";
     std::cin >> smoothness;
+    std::cout << "-------------------------------------------------------------" << std::endl;
+	std::cout << "Enter the radius of the circle (in pixels away from the center; 400 for perfect): ";
+    std::cin >> radius;
     std::cout << "-------------------------------------------------------------" << std::endl;
     std::cout << "Offset for the center of the circle (y-axis): ";
     std::cin >> pixelOffset;
@@ -37,14 +42,11 @@ int main() {
 
 
     // Get the height and width of the screen
-    int height = GetSystemMetrics(SM_CYSCREEN);
-    int width = GetSystemMetrics(SM_CXSCREEN);
+    const int height = GetSystemMetrics(SM_CYSCREEN);
+    const int width = GetSystemMetrics(SM_CXSCREEN);
 
     // Define center of the screen in (x,y) coordinates
-    Point center = { (width / 2), (height / 2) + pixelOffset };
-
-    // Set the radius of the circle (in pixels away from the center of the screen)
-    int radius = 200;
+    const Point center = { (width / 2), (height / 2) + pixelOffset };
 
     // Define the number of steps for smoother movement
     int numSteps = 360;
@@ -75,6 +77,10 @@ int main() {
                 // Move the mouse to the calculated (x,y) coordinates
                 SetCursorPos(x, y);
 
+                if (GetAsyncKeyState(VK_ESCAPE)) {
+                    break;
+                }
+
                 // Sleep for a short duration to control the speed of movement
                 Sleep(10); // Adjust sleep duration as needed for smoother movement
             }
@@ -104,6 +110,10 @@ int main() {
 
                 // Move the mouse to the calculated (x,y) coordinates
                 SetCursorPos(x, y);
+
+                if (GetAsyncKeyState(VK_ESCAPE)) {
+                    break;
+                }
 
                 // Sleep for a short duration to control the speed of movement
                 Sleep(10); // Adjust sleep duration as needed for smoother movement
